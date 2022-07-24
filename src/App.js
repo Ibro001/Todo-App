@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 import Main from './components/Main';
 import User from './components/User'
 import AddNewTodo from './components/AddNewTodo';
@@ -11,12 +11,12 @@ import EditTodo from './components/EditTodo';
 function App() {
   return (
     <div className='header'>
-      <Header>
+      <Sidebar>
         <User />        {/**This are the children props */}
         <AddNewTodo />
         <Calender />
         <Projects />
-      </Header>
+      </Sidebar>
       <Main>
         <Todos />          {/**This is the children props */}
         <EditTodo />

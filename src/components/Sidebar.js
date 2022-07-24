@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Header = ({children}) => {
+const Sidebar = ({children}) => {
   return (
     <div>
       {children}
@@ -8,4 +8,4 @@ const Header = ({children}) => {
   )
 }
 
-export default Header
+export default Sidebar

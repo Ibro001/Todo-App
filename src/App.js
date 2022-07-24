@@ -10,7 +10,7 @@ import EditTodo from './components/EditTodo';
 
 function App() {
   return (
-    <div className='header'>
+    <div className='app'>
       <Sidebar>
         <User />        {/**This are the children props */}
         <AddNewTodo />

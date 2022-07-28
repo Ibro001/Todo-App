@@ -5,7 +5,7 @@ import {calendarItems} from '../constants/index';
 
 const Calender = () => {
   return (
-    <div className='calender'>
+    <div className='projects'>
       <div className='header'>
         <div className='title'>
           <CalendarDate 

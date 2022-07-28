@@ -192,5 +192,54 @@
   border: none;
   border-radius: 0 0 4px 4px;
   cursor: pointer;
+}
 
+/*Calender*/
+
+.calender{
+  padding: 1rem;
+  border-bottom: 1px solid #0080ff;
+}
+
+.calender .header{
+  display: flex;
+  align-items: center;
+}
+
+.calender .header .title{
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.calender .header .title p{
+  margin-left: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.calender .header .btns span{
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.calender .header .btns span:hover{
+  background-color: #ebebeb;
+  transition: all 300ms ease-in-out ;
+}
+
+.calender .items{
+  padding: 0.5rem;
+}
+
+.calender .items .item{
+  padding: 0.25rem;
+  margin: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }

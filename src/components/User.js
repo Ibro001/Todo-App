@@ -9,7 +9,7 @@ const User = () => {
       </div>
       <div className='info'>
         <p>  @ib_Kadiya</p>
-        <a href = '#'>Logout</a>
+        <a href = '#'>Logout</a> 
       </div>
     </div>
   )

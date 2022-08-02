@@ -31,8 +31,8 @@ const Todos = () => {
 
 
   return (
-    <div className='todos'>
-      <div className='selected=project'>
+    <div className='Todos'>
+      <div className='selected-project'>
         {selectedProject}
       </div>
       <div className='todos'>

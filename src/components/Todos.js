@@ -12,8 +12,8 @@ const Todos = () => {
         time: '10:00 AM',
         date: '2/08/2022',
         day: '6',
-        checked: false,
-        color: '#000000',
+        checked: true,
+        color: '#00ff00',
         project: 'personal'
     },
     {
@@ -22,8 +22,8 @@ const Todos = () => {
        time: '09:00 AM',
        date: '03/08/2022',
        day: '3',
-       checked: true,
-       color: '#000000',
+       checked: false,
+       color: '#00ff00',
        project: 'work'
     }
 
@@ -41,7 +41,7 @@ const Todos = () => {
           <Next7Days todos = {todos} />
           :
           todos.map(todo => 
-            <Todo key={todo.key}  todo = {todo} />
+            <Todo key={todo.id}  todo = {todo} />
           )
         }
       </div>

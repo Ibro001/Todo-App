@@ -105,14 +105,14 @@
 
 /*AddNewTodo Form*/
 
-.AddNewTodo form{
+.todoForm{
   padding: 1rem 1rem calc(1rem + 40px) 1rem;
-  width: 500px;
+  width: 100%;
   background: white;
   border-radius: 4px;
 }
 
-.AddNewTodo form .text input{
+.todoForm .text input{
   padding: 1rem;
   width: 100%;
   margin-bottom: 0.5rem;
@@ -120,46 +120,46 @@
   font-size: 1.2rem;
 }
 
-.AddNewTodo form .text input:focus{
+.todoForm .text input:focus{
   outline: none;
   border-bottom: 1px solid #0080ff;
 }
 
-.AddNewTodo form .remind{
+.todoForm .remind{
   display: flex;
   align-items: center;
   padding: 0.5rem;
 } 
 
-.AddNewTodo form p{
+.todoForm p{
   margin-left: 10px;
 }
 
-.AddNewTodo form .title{
+.todoForm .title{
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
 
-.AddNewTodo form .pick-day{
+.todoForm .pick-day{
   padding: 1.5rem 1.5rem 0 1.5rem;
 }
 
-.AddNewTodo form .pick-time{
+.todoForm .pick-time{
   padding: 1.5rem;
 }
 
-.AddNewTodo form .pick-project{
+.todoForm .pick-project{
   padding: 0.5rem;
 }
 
-.AddNewTodo form .pick-project .projects{
+.todoForm .pick-project .projects{
   display: flex;
   flex-wrap: wrap;
   padding: 1rem 1rem 0 1rem;
 }
 
-.AddNewTodo form .pick-project .projects .project{
+.todoForm .pick-project .projects .project{
   border: 1px solid #0080ff;
   border-radius: 5px;
   padding: 5px;
@@ -167,25 +167,25 @@
   cursor: pointer;
 }
 
-.AddNewTodo form .pick-project .active{
+.todoForm .pick-project .active{
   background-color: #0080ff;
 }
 
-.AddNewTodo form .cancel{
+.todoForm .cancel{
   position: absolute;
   top: 0;
   right: 5px;
   cursor: pointer;
 }
 
-.AddNewTodo form .confirm{
+.todoForm .confirm{
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
 }
 
-.AddNewTodo form .confirm button{
+.todoForm .confirm button{
   width: 100%;
   height: 40px;
   background: #0080ff;
@@ -408,6 +408,7 @@
   bottom: 40px;
   left: 40px;
   border-radius: 4px;
+  opacity: 0.9;
   padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
@@ -420,7 +421,7 @@
   border-bottom: 1px solid #eeeeee ;
 }
 
-.Todos .todo{
+.Todos .todos{
   overflow-y: auto;
 }
 
@@ -466,4 +467,25 @@
 
 .todo .todo-container .add-to-next-day{
   margin-right: 3px;
+}
+
+/*EditTodo*/
+
+.editTodo{
+  position: absolute;
+  bottom: 40px;
+  left: calc(40px + 450px + 40px);
+  background-color: white;
+  height: 80%;
+  width: 450px;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+.editTodo .header{
+  margin: 1rem 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #eeeeee;
 }

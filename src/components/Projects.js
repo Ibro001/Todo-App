@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Palette, PencilFill, CaretUp } from 'react-bootstrap-icons';
 import AddNewProjects from './AddNewProjects';
 import Project from './Project';
+import { TodoContext } from '../context';
+
 
 
 const Projects = () => {
@@ -9,11 +11,9 @@ const Projects = () => {
   const [edit,setEdit] = useState(false);
   const pencilColor = edit ? '#1EC94C' : '#000000';
   const [showMenu,setShowMenu] = useState(true);
-  const Projects = [
-    {id:1, name: 'personal', numOfTodos: 0},
-    {id:2, name: 'work', numOfTodos: 1},
-    {id:3, name: 'other', numOfTodos: 2}
-  ]
+  
+  //Import project using Context API//
+  const { projects } = useContext(TodoContext)
 
   return (
     <div className='projects'>
@@ -24,7 +24,7 @@ const Projects = () => {
         </div>
         <div className='btns'>
           {
-            showMenu && Projects.length > 0 &&
+            showMenu && projects.length > 0 &&
             <span  className='edit' onClick={() => setEdit(edit => !edit)}>
               <PencilFill size= '15' color={pencilColor}/>
             </span>
@@ -37,7 +37,7 @@ const Projects = () => {
       </div>
       <div className='items'>
         {
-          Projects.map(project => 
+          projects.map(project => 
             <Project 
                 project={project}
                 key={project.id}

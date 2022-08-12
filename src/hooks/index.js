@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { useState, useEffect } from 'react'
 import firebase from '../firebase'
 
@@ -55,69 +56,32 @@ export function useProjects(todos){
     return projects
 }
 
+export function  useFilterTodos(todos,selectedProject){
 
-
-
-
-
-
-
-/*import { useState, useEffect} from 'react'
-import { collection, getDocs} from 'firebase/firestore'
-import {db} from '../firebase'
-
-export  function useProjects(todos){              // custom hook: useTodos//
-    const [projects,setProjects] = useState([]);
-
-    function calculateNumOfTodos(projectName,todos){
-        return todos.filter(todo => todo.projectName === projectName ).length
-    }
+    const [filteredTodos, setFilteredTodos] = useState([]);
 
     useEffect(() => {
-        const  projectsCollectionsRef = collection(db, 'projects')
-        getDocs(projectsCollectionsRef)
-            .then(response => {
-            const data = response.docs.map(doc => {
-                const projectName = doc.data().name  //Grab the project name//
+        let data;
+        const todayDateFormated = moment().format('MM/DD/YYYY')
+        if(selectedProject === 'today'){
+            data = todos.filter(todo => todo.date === todayDateFormated)
+        }else if(selectedProject === 'next 7 days'){
+            data = todos.filter(todo => {
+                const todoDate = moment(todo.date, 'MM/DD/YYYY')
+                const todayDate = moment(todayDateFormated, 'MM/DD/YYYY')
 
-                return {
-                    id: doc.id,           //to get the unique document id//
-                    name: projectName,    //get the name of our project
-                    numOfTodos: calculateNumOfTodos(projectName,todos)           //function to calculate the total num of my todos//
-                }
+                const diffDays = todoDate.diff(todayDate, 'days')
+
+                return diffDays >= 0 && diffDays < 7
             })
-            setProjects(data)
-        }).catch(error => console.log(error.message))
-        return() => {projectsCollectionsRef()}
-    },[])   //useEffect clean-up to avoid memory leak//
-    return projects
+        }else if(selectedProject === 'all days'){
+            data = todos
+        }else{
+            data = todos.filter(todo => todo.projectName === selectedProject)
+        }
+
+        setFilteredTodos(data)
+    },[todos,selectedProject])
+    
+    return filteredTodos
 }
-
-
-
-
-
-export  function useTodos(){              // custom hook: useTodos//
-    const [todos,setTodos] = useState([]);
-
-    useEffect(() => {
-        const todoCollectionsRef = collection(db,'todos')
-        getDocs(todoCollectionsRef)
-            .then(response => {
-            const data = response.docs.map(doc => {
-                return {
-                    id: doc.id,           //to get the unique document id//
-                    ...doc.data           //to get the other data i use the spread operator 
-                }
-            })
-            setTodos(data)
-        }).catch(error => console.log(error.message))
-        return () => {todoCollectionsRef()}
-    },[])   //useEffect clean-up to avoid memory leak//
-    return todos
-}*/
-
-
-
-
-

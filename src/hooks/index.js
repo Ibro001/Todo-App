@@ -77,3 +77,19 @@ export function  useFilterTodos(todos,selectedProject){
     
     return filteredTodos
 }
+
+export function useProjectsWithStats(projects,todos){
+    //state
+    const [projectsWithStats, setProjectsWithStats] = useState([]);
+
+    useEffect(() => {
+        const data = projects.map(project => {
+            return{
+                numOfTodos: todos.filter(todo => todo.projectName === project.name && !todo.checked).length,
+                ...project
+            }
+        })
+        setProjectsWithStats(data)
+    }, [projects,todos])
+    return projectsWithStats
+}

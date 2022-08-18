@@ -3,6 +3,7 @@ import { CheckCircleFill, Circle, ArrowClockwise, Trash } from 'react-bootstrap-
 import firebase from '../firebase';
 import moment from 'moment'
 import { TodoContext } from '../context';
+import {useTransition,useSpring,animated} from 'react-spring'
 
 
 
@@ -57,9 +58,20 @@ const Todo = ({todo}) => {
         .add(repeatedTodo)
 }
   
+  //Animation
+  const fadeIn = useSpring({
+    from: {marginTop: '-12px', opacity: 0},
+    to: {marginTop: '0px', opacity: 1}
+  })
+
+  const checkTransitions = useTransition(todo.checked,{
+    from: {position: 'absolute', transform: 'scale(0)'},
+    enter: {transform: 'scale(1)'},
+    leave: {transform: 'scale(0)'}
+  })
 
   return (
-    <div className='todo'>
+    <animated.div style={fadeIn} className='todo'>
       <div className = 'todo-container'
            onMouseEnter={()=> setHover(true)}
            onMouseLeave={()=> setHover(false)}
@@ -69,14 +81,16 @@ const Todo = ({todo}) => {
           onClick={() => checkTodo(todo)}
         >
           {
-            todo.checked? 
-            <span className>
-              <CheckCircleFill color= '#bebebe'/>
-            </span>
-            :
-            <span className='unchecked'>
-              <Circle color={todo.color} />
-            </span>
+            checkTransitions((props, checked) => 
+              checked ? 
+              <animated.span style={props} className='checked'>
+                <CheckCircleFill color= '#bebebe'/>
+              </animated.span>
+              :
+              <animated.span style={props} className='unchecked'>
+                <Circle color={todo.color} />
+              </animated.span>
+            )
           }
         </div>
         <div 
@@ -112,7 +126,7 @@ const Todo = ({todo}) => {
           }
         </div>
       </div>
-    </div>
+    </animated.div>
   )
 }
 

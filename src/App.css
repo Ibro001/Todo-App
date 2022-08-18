@@ -437,6 +437,13 @@
   align-items: center;
 }
 
+.todo .todo-container .checked-todo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+}
+
 .todo .todo-container span{
   cursor: pointer;
 }
